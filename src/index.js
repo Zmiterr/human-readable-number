@@ -1,6 +1,6 @@
 module.exports = function toReadable (number) {
     var numStr = number.toString();
-    var onesHundred = parseInt(numStr.substr(1));
+    var onesHundred = +(numStr.substr(1));
     var ones = ['', ' one', ' two', ' three', ' four', ' five', ' six', ' seven', ' eight', ' nine', ' ten', ' eleven', ' twelve', ' thirteen', ' fourteen', ' fifteen', ' sixteen', ' seventeen', ' eighteen', ' nineteen'];
     var tens = ['', '', ' twenty', ' thirty', ' forty', ' fifty', ' sixty', ' seventy', ' eighty', ' ninety'];
     var hundred = ' hundred';
@@ -15,18 +15,18 @@ module.exports = function toReadable (number) {
     }
 
     if (numStr.length == 2) {
-    str += tens[parseInt(numStr.charAt(0))];
-    str += ones[parseInt(numStr.charAt(1))];
+    str += tens[+(numStr[0])];
+    str += ones[+(numStr[1])];
       return str.trim();
     }
     
-    str =  ones[parseInt(numStr.charAt(0))] + hundred;
+    str =  ones[+(numStr[0])] + hundred;
     if (onesHundred<20){
       str += ones[onesHundred];
       return str.trim(); 
     } else {
-      str += tens[parseInt(numStr.charAt(1))];
-      str += ones[parseInt(numStr.charAt(2))];
+      str += tens[+(numStr[1])];
+      str += ones[+(numStr[2])];
       return str.trim();
     }
 
